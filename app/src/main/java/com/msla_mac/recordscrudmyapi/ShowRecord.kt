@@ -12,7 +12,6 @@ import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 
-
 class ShowRecord : BaseActivity() {
     lateinit var record : RecordsItem
 
@@ -25,15 +24,15 @@ class ShowRecord : BaseActivity() {
         val txtDescription: TextView = findViewById(R.id.txtDescription)
         val txtPrice: TextView = findViewById(R.id.txtPrice)
         val txtRating: TextView = findViewById(R.id.txtRating)
-        val txtImage: ImageView = findViewById(R.id.recordImage)
         val txtDateModified: TextView = findViewById(R.id.txtDateModified)
         val txtDateCreated: TextView = findViewById(R.id.txtDateCreated)
+        val txtImage: ImageView = findViewById(R.id.recordImage)
 
         record = recordsList[ currentRecord ]
 
         txtRecordID.text = record.recordID.toString()
         txtName.text = record.name
-        txtDescription.text = record.description
+        txtDescription.text = record.description.substring(0..10)
         txtPrice.text = record.price.toString()
         txtRating.text = record.rating.toString()
         txtDateModified.text = record.dateModified

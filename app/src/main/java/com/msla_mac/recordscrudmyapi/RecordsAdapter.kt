@@ -21,7 +21,6 @@ internal class RecordsAdapter(
         var description: TextView = view.findViewById(R.id.recordDescriptionText)
         var price: TextView = view.findViewById(R.id.recordPriceText)
         var rating: TextView = view.findViewById(R.id.recordRatingText)
-        var image: ImageView = view.findViewById(R.id.recordImage)
         var dateModified: TextView = view.findViewById(R.id.recordDateModified)
         var dateCreated: TextView = view.findViewById(R.id.recordDateCreated)
 
@@ -47,7 +46,7 @@ internal class RecordsAdapter(
 
         holder.recordID.text = recordItem.recordID.toString()
         holder.item.text = recordItem.name
-        holder.description.text = recordItem.description.substring(0..50)
+        holder.description.text = recordItem.description
         holder.price.text = recordItem.price.toString().format("%2f", this)
         holder.rating.text = recordItem.rating.toString()
         holder.dateModified.text = recordItem.dateModified

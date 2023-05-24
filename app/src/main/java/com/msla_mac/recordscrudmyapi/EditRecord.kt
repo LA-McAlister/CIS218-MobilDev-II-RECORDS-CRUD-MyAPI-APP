@@ -23,6 +23,7 @@ class EditRecord : BaseActivity() {
     lateinit var edtEditPrice: EditText
     lateinit var edtEditRating: EditText
     lateinit var edtEditDateModified: TextView
+    lateinit var edtEditURL : EditText
 
     private val formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
     private val modifiedDate : String = LocalDateTime.now().format(formatter)!!
@@ -38,6 +39,7 @@ class EditRecord : BaseActivity() {
         edtEditPrice = findViewById(R.id.edtEditPrice)
         edtEditRating = findViewById(R.id.edtEditRating)
         edtEditDateModified = findViewById(R.id.edtEditDateModified)
+        edtEditURL = findViewById(R.id.edtEditURL)
 
 
         //setting textEdit to default values
@@ -46,8 +48,8 @@ class EditRecord : BaseActivity() {
         edtEditDescription.setText(record.description)
         edtEditPrice.setText(record.price.toString())
         edtEditRating.setText(record.rating.toString())
+        edtEditURL.setText(record.image)
         edtEditDateModified.setText(record.dateModified)
-
     }
 
     fun editRecordsOnClick(v: View) {
@@ -56,6 +58,7 @@ class EditRecord : BaseActivity() {
         record.description = edtEditDescription.text.toString()
         record.price = edtEditPrice.text.toString().toDouble()
         record.rating = edtEditRating.text.toString().toInt()
+        record.image = edtEditURL.text.toString()
         recordsList[currentRecord] = record
 
         //Write the edited record to database:
@@ -79,6 +82,7 @@ class EditRecord : BaseActivity() {
                 params["description"] = record.description
                 params["price"] = record.price.toString()
                 params["rating"] = record.rating.toString()
+                params["image"] = record.image
                 params["modifiedDate"] = modifiedDate
                 return params
             }
