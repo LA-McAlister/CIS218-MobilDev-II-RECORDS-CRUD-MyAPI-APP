@@ -1,15 +1,17 @@
 package com.msla_mac.recordscrudmyapi
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.android.volley.Request
-import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import org.json.JSONObject
+
 
 class ShowRecord : BaseActivity() {
     lateinit var record : RecordsItem
@@ -23,6 +25,7 @@ class ShowRecord : BaseActivity() {
         val txtDescription: TextView = findViewById(R.id.txtDescription)
         val txtPrice: TextView = findViewById(R.id.txtPrice)
         val txtRating: TextView = findViewById(R.id.txtRating)
+        val txtImage: ImageView = findViewById(R.id.recordImage)
         val txtDateModified: TextView = findViewById(R.id.txtDateModified)
         val txtDateCreated: TextView = findViewById(R.id.txtDateCreated)
 
@@ -35,6 +38,24 @@ class ShowRecord : BaseActivity() {
         txtRating.text = record.rating.toString()
         txtDateModified.text = record.dateModified
         txtDateCreated.text = record.dateCreated
+
+        val imageUrl = "https://via.placeholder.com/50x50.png"
+
+        val imageRequest = ImageRequest(
+            imageUrl,
+            { bitmap -> // response listener
+                txtImage.setImageBitmap(bitmap)
+            },
+            0, // max width
+            0, // max height
+            ImageView.ScaleType.CENTER_CROP, // image scale type
+            Bitmap.Config.ARGB_8888, // decode config
+            { error -> // error listener
+            }
+        )
+
+        VolleySingleton.getInstance(applicationContext)
+            .addToRequestQueue(imageRequest)
     }
 
     fun deleteRecordOnClick ( v: View){

@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 import javax.xml.transform.ErrorListener
 import kotlin.random.Random
+import com.android.volley.toolbox.ImageRequest
 
 class MainActivity : BaseActivity() {
     lateinit var recyclerView : RecyclerView
@@ -33,6 +34,7 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this, ShowRecord::class.java)
             currentRecord = position
             startActivity(intent)
+
         }
 
 
@@ -63,9 +65,10 @@ class MainActivity : BaseActivity() {
                     val description = record.getString("description")
                     val price = record.getDouble("price")
                     val rating = record.getInt("rating")
+                    val image = record.getString("image")
                     val dateCreated = record.getString("created_at")
                     val dateModified = record.getString("updated_at")
-                    val recordsItem = RecordsItem(id, name, description, price, rating, dateModified, dateCreated)
+                    val recordsItem = RecordsItem(id, name, description, price, rating, image, dateModified, dateCreated)
                     recordsList.add(recordsItem)
                 }
                 recordsListAdapter.notifyDataSetChanged()
@@ -80,7 +83,12 @@ class MainActivity : BaseActivity() {
         //Add the request to the RequestQueue.
         stringRequest.setShouldCache(false) //this forces information retrieval from the network again and not the volley cache data file in the project.
         queue.add(stringRequest)
+
+
     }
+
+
+
 
     fun editRecordOnClick(v : View) {
         val intent = Intent(this, EditRecord::class.java)
