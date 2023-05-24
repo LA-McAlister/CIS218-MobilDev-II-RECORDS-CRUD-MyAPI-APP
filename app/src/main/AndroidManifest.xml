@@ -15,6 +15,15 @@
         android:theme="@style/Theme.RecordsCRUDmyAPI"
         tools:targetApi="31">
         <activity
+            android:name=".AddRecord"
+            android:exported="false" />
+        <activity
+            android:name=".EditRecord"
+            android:exported="false" />
+        <activity
+            android:name=".ShowRecord"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
