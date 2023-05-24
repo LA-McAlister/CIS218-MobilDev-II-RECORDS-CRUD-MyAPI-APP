@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.msla_mac.myapplication'
+    namespace 'com.msla_mac.recordscrudmyapi'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.msla_mac.myapplication"
+        applicationId "com.msla_mac.recordscrudmyapi"
         minSdk 27
         targetSdk 33
         versionCode 1

@@ -1,4 +1,4 @@
-package com.msla_mac.myapplication
+package com.msla_mac.recordscrudmyapi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
