@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter
 
 var recordsList = ArrayList<RecordsItem>()
 var currentRecord = 0
-val baseUrl = "https://coder.land/api/products"
+val baseUrl = "http://testapi.mslamac.com/api/products"
 
 open class BaseActivity() : AppCompatActivity() {
 
